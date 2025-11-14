@@ -1,0 +1,32 @@
+#dEfinit la structure de ton API GraphQL
+
+# Definition du type Book
+type Book{
+    id: ID!
+    title: String!
+    author: String!
+    description: String!
+    isbn: String!
+    price: Float!
+    stock: Float!
+}
+
+# Input pour creer ou modifier un livre
+input bookInput{
+    title: String!
+    author: String!
+    description: String
+    isbn: String!
+    price: Float!
+    stock: Float!
+}
+## Queries disponibles
+type Query {
+    books : [Book!]!
+    bookById(id:ID!) : Book
+}
+type Mutation {
+    createBook(input: bookInput!): Book!
+    deleteBook(id:ID!):Boolean
+    updateBook(id:ID!, input: bookInput):Book!
+}
